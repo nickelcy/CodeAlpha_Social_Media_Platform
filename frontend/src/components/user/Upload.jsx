@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Widget from "../shared/Widget";
 import Navbar from "../shared/Navbar";
+import { UserContext } from "../../App";
 
 const Upload = (props) => {
   const serverUrl = import.meta.env.VITE_SERVER;
@@ -11,6 +12,7 @@ const Upload = (props) => {
   const [caption, setCaption] = useState("");
   const [media, setMedia] = useState("");
   const [uploadData, setUploadData] = useState({});
+  const {user} = useContext(UserContext)
 
   useEffect(() => {
     setUploadData({
@@ -26,7 +28,12 @@ const Upload = (props) => {
         withCredentials: true,
       });
       alert(res.data.message);
-      window.location.reload();
+      navigate("/")
+      Notification.requestPermission().then( perm => {
+        if (perm === "granted") {
+          new Notification(`${user.username} uploaded a new post!`)
+        }
+      })
     } catch (error) {
       console.error(error);
     }

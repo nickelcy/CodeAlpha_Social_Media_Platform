@@ -23,7 +23,6 @@ const PostCard = ({ username, image, liked, likes, caption, pid }) => {
         { pid },
         { withCredentials: true }
       );
-      console.log(result);
     } catch (error) {
       console.error(error);
       alert(error.response.data.message || "There was an error.");
@@ -36,10 +35,9 @@ const PostCard = ({ username, image, liked, likes, caption, pid }) => {
         { pid },
         { withCredentials: true }
       );
-      console.log(result);
     } catch (error) {
       console.error(error);
-      console.log(error)
+      console.log(error);
       alert(error.response.data.message || "There was an error.");
     }
   };
@@ -54,24 +52,23 @@ const PostCard = ({ username, image, liked, likes, caption, pid }) => {
           <FaUserCircle className="text-white fs-4 me-3" />
           <b>{username || "user"}</b>
         </div>
-        <div
-          className="container bg-secondary w-100 p-0 overflow-hidden"
-          // style={{ maxHeight: "50%" }}
-        >
-          <img
-            src={
-              image ||
-              "https://res.cloudinary.com/dssflbzdi/image/upload/v1748353453/placeholder_a6gfd6.jpg"
-            }
-            alt="username post"
-            height="100%"
-            width="100%"
-            style={{
-              objectFit: "cover",
-              objectPosition: "center",
-              minHeight: "50vh",
-            }}
-          />
+        <div className="container bg-secondary w-100 p-0 overflow-hidden">
+          <a href={image || alert("Image source not found")} target="blank">
+            <img
+              src={
+                image ||
+                "https://res.cloudinary.com/dssflbzdi/image/upload/v1748353453/placeholder_a6gfd6.jpg"
+              }
+              alt="username post"
+              height="100%"
+              width="100%"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center",
+                minHeight: "50vh",
+              }}
+            />
+          </a>
         </div>
 
         {loginStatus ? (
@@ -85,9 +82,9 @@ const PostCard = ({ username, image, liked, likes, caption, pid }) => {
                   });
                   setIsLiked(false);
                   setUser((prev) => {
-                    return {...prev, likes: prev.likes - 1}
-                  })
-                  unlike()
+                    return { ...prev, likes: prev.likes - 1 };
+                  });
+                  unlike();
                 } else if (!isLiked) {
                   setIsLiked(true);
                   setLikesCount((prev) => {

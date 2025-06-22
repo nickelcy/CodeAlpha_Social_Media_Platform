@@ -1,9 +1,9 @@
 import Navbar from "../shared/Navbar";
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "./components/ProfileCard";
 import { GrUploadOption } from "react-icons/gr";
 import { useNavigate } from "react-router";
 import { UserContext } from "../../App";
-
+import Gallery from "./Gallery";
 
 const Profile = (props) => {
   const navigate = useNavigate();
@@ -17,18 +17,16 @@ const Profile = (props) => {
         <div className="-bg-dark w-100 p-2" style={{ maxWidth: "500px" }}>
           <ProfileCard />
           <hr />
-          <ul className="list-unstyled d-flex gap-4 align-items-center mx-3 p-0">
-            <li className="text-dark">Manage</li>
-            <li className="text-dark">View</li>
-            <li className="text-dark">
-              <GrUploadOption
-                style={{ cursor: "pointer" }}
-                onClick={() => navigate("/upload")}
-              />
-            </li>
-          </ul>
-
+          <div className="d-flex gap-4 align-items-center mx-3 p-0">
+            <button
+              className="btn btn-outline-success d-flex flex-row align-items-center gap-2"
+              onClick={() => navigate("/upload")}
+            >
+              Upload <GrUploadOption style={{ cursor: "pointer" }} />
+            </button>
+          </div>
           <hr />
+          <Gallery />
         </div>
       </div>
     </>

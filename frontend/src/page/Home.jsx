@@ -35,7 +35,7 @@ const home = () => {
   return (
     <div>
       <Navbar />
-      {posts.map((post, index) => {
+      {posts.length > 0? posts.map((post, index) => {
         return (
           <PostCard
             key={index}
@@ -47,7 +47,10 @@ const home = () => {
             caption={post.caption}
           />
         );
-      })}
+      }): 
+    
+    <h5 className="text-center mt-5">No Posts Shared</h5>
+    }
     </div>
   );
 };

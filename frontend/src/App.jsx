@@ -13,7 +13,6 @@ export const UserContext = createContext();
 
 function App() {
   const [loginStatus, setLoginStatus] = useState(false);
-  const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -22,7 +21,6 @@ function App() {
       .then((response) => {
         if (response.status == 200) {
           setUser(response.data.user);
-          console.log(response.data.user)
           setLoginStatus(true);
         } else {
           setLoginStatus(true);
@@ -33,8 +31,6 @@ function App() {
         setLoginStatus(false);
       });
   }, []);
-
-  console.log(user)
 
   return (
     <LoginContext.Provider value={{ loginStatus, setLoginStatus }}>

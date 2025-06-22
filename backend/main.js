@@ -230,7 +230,6 @@ app.patch("/unlike", verifyToken, async (req, res) => {
       "Delete from likes where pid = ? and uid = ?;",
       [pid, req.user.uid]
     );
-    console.log(result);
     if (result.affectedRows == 0) {
       return res.status(400).json({ message: "Bad request made!" });
     }

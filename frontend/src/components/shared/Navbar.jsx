@@ -15,14 +15,21 @@ const Navbar = (props) => {
     <nav className="navbar navbar-dark bg-dark px-3 py-3">
       <div className="container d-flex justify-content-between">
         <a className="navbar-brand m-0 h1 d-flex gap-1" href="/">
-          <SiPicsart className="text-primary"/>
+          <SiPicsart className="text-primary" />
           PicShare
         </a>
         <div className="d-flex justify-content-between align-items-center">
-          <FaUserCircle onClick={() => {navigate("/profile")}} className="text-white fs-4 me-3" style={{cursor: "pointer"}}/>
+          <FaUserCircle
+            onClick={() => {
+              navigate("/profile");
+            }}
+            className="text-white fs-4 me-3"
+            style={{ cursor: "pointer" }}
+          />
           {loginStatus ? (
             <>
               <div
+                className="d-flex"
                 style={{ cursor: "pointer" }}
                 onClick={async () => {
                   try {
@@ -31,9 +38,8 @@ const Navbar = (props) => {
                       {},
                       { withCredentials: true }
                     );
-                    console.log(res);
                     alert(res.data.message);
-                    setLoginStatus(false)
+                    setLoginStatus(false);
                   } catch (error) {
                     console.error(error);
                     alert("Error logging out!");
@@ -41,19 +47,22 @@ const Navbar = (props) => {
                 }}
               >
                 <RiLogoutCircleLine className="text-danger fs-4" />
-                <b className="text-danger m-0 ps-1">Logout</b>
+                <b className="text-danger m-0 ps-1 d-none d-md-inline">
+                  Logout
+                </b>
               </div>
             </>
           ) : (
             <>
               <div
+                className="d-flex"
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   navigate("/login");
                 }}
               >
                 <RiLoginCircleLine className="text-white fs-4" />
-                <b className="text-light m-0 ps-1">Login</b>
+                <b className="text-light m-0 ps-1 d-none d-md-inline">Login</b>
               </div>
             </>
           )}

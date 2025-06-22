@@ -1,5 +1,5 @@
 import { FaUserCircle } from "react-icons/fa";
-import { UserContext } from "../../App";
+import { UserContext } from "../../../App";
 import { useContext, useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
@@ -22,7 +22,6 @@ const ProfileCard = () => {
         console.error(error);
       });
   }, []);
-  console.log(info)
 
   return (
     <div className="w-100 h-100 d-flex flex-row">
