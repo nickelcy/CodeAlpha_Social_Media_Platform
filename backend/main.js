@@ -182,10 +182,10 @@ app.post("/register", async (req, res) => {
 
     const token = jwt.sign(
       {
-        uid: user.uid,
-        username: user.username,
-        likes: user.total_likes,
-        posts: user.post_count,
+        uid: user[0].uid,
+        username: user[0].username,
+        likes: user[0].total_likes,
+        posts: user[0].post_count,
       },
       process.env.JWT_SECRET,
       { expiresIn: "1h" }
