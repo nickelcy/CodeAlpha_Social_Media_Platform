@@ -131,8 +131,8 @@ app.post("/login", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.SECURE,
+      sameSite: process.env.SAME_SITE,
       maxAge: 3600000,
       path: "/",
     });
@@ -148,8 +148,8 @@ app.post("/login", async (req, res) => {
 app.post("/logout", async (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    secure: false,
-    sameSite: "lax",
+    secure: process.env.SECURE,
+    sameSite: process.env.SAME_SITE,
     path: "/",
   });
   res.status(200).json({ message: "Logged out successfully" });
@@ -193,8 +193,8 @@ app.post("/register", async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.SECURE,
+      sameSite: process.env.SAME_SITE,
       maxAge: 3600000,
       path: "/",
     });
