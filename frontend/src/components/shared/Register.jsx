@@ -13,6 +13,7 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [uploadData, setUploadData] = useState();
   const [error1, setError1] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (loginStatus) {
@@ -25,6 +26,8 @@ const Register = (props) => {
   }, [username, password, confirmPassword]);
 
   const handleSubmit = async (e) => {
+    if (loading) return;
+    setLoading(true)
     e.preventDefault();
     if (error1) {
       alert("Please ensure passwords are matching.");
@@ -34,6 +37,7 @@ const Register = (props) => {
       const res = await axios.post(`${serverUrl}/register`, uploadData, {
         withCredentials: true,
       });
+      setLoading(false)
       alert("Account created. You are Logged In.");
       setLoginStatus(true);
       navigate("/", { replace: true });
@@ -121,7 +125,7 @@ const Register = (props) => {
           />
           <label htmlFor="confirm">Confirm Password</label>
         </div>
-        <button type="submit" className="btn btn-success w-75">
+        <button type="submit" className="btn btn-success w-75" disabled={loading}>
           Sign up
         </button>
 

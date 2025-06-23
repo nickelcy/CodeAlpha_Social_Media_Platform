@@ -10,6 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [data, setData] = useState({});
   const { loginStatus, setLoginStatus } = useContext(LoginContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (loginStatus) {
@@ -22,11 +23,14 @@ const Login = () => {
   }, [username, password]);
 
   const handleSubmit = async (e) => {
+    if (loading) return;
+    setLoading(true)
     e.preventDefault();
     try {
       const result = await axios.post(`${server}/login`, data, {
         withCredentials: true,
       });
+      setLoading(false)
       alert(result.data.message);
       setLoginStatus(true);
       navigate("/");
@@ -83,7 +87,7 @@ const Login = () => {
           <label htmlFor="password">Password</label>
         </div>
 
-        <button type="submit" className="btn btn-success w-75">
+        <button type="submit" className="btn btn-success w-75" disabled={loading}>
           Sign in
         </button>
 

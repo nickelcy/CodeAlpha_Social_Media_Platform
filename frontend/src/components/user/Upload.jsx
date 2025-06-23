@@ -13,6 +13,7 @@ const Upload = (props) => {
   const [media, setMedia] = useState("");
   const [uploadData, setUploadData] = useState({});
   const {user} = useContext(UserContext)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setUploadData({
@@ -22,11 +23,14 @@ const Upload = (props) => {
   }, [caption, media]);
 
   const handleSubmit = async (e) => {
+    if (loading) return
+    setLoading(true)
     e.preventDefault();
     try {
       const res = await axios.post(`${serverUrl}/upload`, uploadData, {
         withCredentials: true,
       });
+      setLoading(false)
       alert(res.data.message);
       navigate("/")
       Notification.requestPermission().then( perm => {
@@ -102,7 +106,7 @@ const Upload = (props) => {
               <button
                 type="submit"
                 className="btn btn-success"
-                disabled={media.length === 0}
+                disabled={media.length === 0 || loading === true}
               >
                 Submit
               </button>
