@@ -7,7 +7,7 @@
   "type": "module",
   "main": "main.js",
   "scripts": {
-    "test": "node main.js",
+    "deploy": "node main.js",
     "dev": "nodemon main.js"
   },
   "dependencies": {
