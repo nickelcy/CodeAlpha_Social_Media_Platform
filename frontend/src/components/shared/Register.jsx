@@ -51,7 +51,7 @@ const Register = (props) => {
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
-      style={{ minHeight: "80vh" }}
+      style={{ minHeight: "100vh" }}
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3 overflow-y-auto opacity"
@@ -66,7 +66,8 @@ const Register = (props) => {
           handleSubmit(e);
         }}
         className="col-10 col-sm-7 text-bg-secondary text-center pb-4 px-0 rounded overflow-y-auto"
-        style={{ maxWidth: "500px", maxHeight: "98vh" }}
+        // style={{ maxWidth: "500px", maxHeight: "98vh" }}
+        style={{ transform: "translateY(-10%)", maxWidth: "500px" }}
       >
         <h2 className="mt-4 mb-4">User Registration</h2>
 
@@ -126,7 +127,11 @@ const Register = (props) => {
           />
           <label htmlFor="confirm">Confirm Password</label>
         </div>
-        <button type="submit" className="btn btn-success w-75" disabled={loading}>
+        <button
+          type="submit"
+          className="btn btn-success w-75"
+          disabled={loading}
+        >
           Sign up
         </button>
 
