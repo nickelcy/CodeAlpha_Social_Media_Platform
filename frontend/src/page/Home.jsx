@@ -52,7 +52,7 @@ const home = () => {
       ) : (
         <>
           <h5 className="text-center mt-5">No Posts</h5>
-          <p className="text-muted">
+          <p className="text-muted text-center">
             Rendering posts may take a moment as the free database hosting service needs
             time to wake up after being idle. Try reloading.
           </p>
