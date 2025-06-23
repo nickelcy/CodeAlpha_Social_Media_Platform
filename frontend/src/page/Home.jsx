@@ -35,22 +35,29 @@ const home = () => {
   return (
     <div>
       <Navbar />
-      {posts.length > 0? posts.map((post, index) => {
-        return (
-          <PostCard
-            key={index}
-            pid={post.post}
-            username={post.username}
-            image={post.image}
-            liked={post.liked || false}
-            likes={post.likes}
-            caption={post.caption}
-          />
-        );
-      }): 
-    
-    <h5 className="text-center mt-5">No Posts Shared</h5>
-    }
+      {posts.length > 0 ? (
+        posts.map((post, index) => {
+          return (
+            <PostCard
+              key={index}
+              pid={post.post}
+              username={post.username}
+              image={post.image}
+              liked={post.liked || false}
+              likes={post.likes}
+              caption={post.caption}
+            />
+          );
+        })
+      ) : (
+        <>
+          <h5 className="text-center mt-5">No Posts</h5>
+          <p className="text-muted">
+            Rendering posts may take a moment as the free database hosting service needs
+            time to wake up after being idle. Try reloading.
+          </p>
+        </>
+      )}
     </div>
   );
 };
