@@ -43,6 +43,7 @@ const Register = (props) => {
       navigate("/", { replace: true });
     } catch (error) {
       console.error(error);
+      setLoading(false);
       alert(error.response.data.message || "There was an error registering.");
     }
   };
@@ -50,7 +51,7 @@ const Register = (props) => {
   return (
     <div
       className="row m-0 d-flex justify-content-center align-items-center text-bg-dark"
-      style={{ minHeight: "100vh" }}
+      style={{ minHeight: "80vh" }}
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3 overflow-y-auto opacity"

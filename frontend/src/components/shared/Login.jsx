@@ -35,6 +35,7 @@ const Login = () => {
       setLoginStatus(true);
       navigate("/");
     } catch (error) {
+      setLoading(false);
       alert(error.response.data.message);
       console.error(error);
     }
@@ -43,7 +44,7 @@ const Login = () => {
   return (
     <div
       className="d-flex justify-content-center align-items-center overflow-hidden bg-dark"
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: "100vw", height: "80vh" }}
     >
       <button
         className="btn btn-secondary position-absolute top-0 start-0 mx-2 my-3 overflow-y-auto opacity w-100"
