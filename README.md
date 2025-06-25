@@ -1,7 +1,7 @@
 # Social Media App
 
 A full-stack social media platform where users can register, log in, upload posts with images, and interact with content.
-Visit http://.... 
+Visit [picshared.netlify.app](https://picshared.netlify.app/)
 to view the deployed project.
 
 ---
